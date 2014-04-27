@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v8.71 
-MySQL - 5.6.16 : Database - papeleria_bsc
+MySQL - 5.5.34 : Database - papeleria_bsc
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 5.6.16 : Database - papeleria_bsc
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`papeleria_bsc` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`papeleria_bsc` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE `papeleria_bsc`;
 
@@ -22,13 +22,13 @@ DROP TABLE IF EXISTS `categoria`;
 
 CREATE TABLE `categoria` (
   `id` int(10) unsigned NOT NULL,
-  `descripcion` text,
+  `descripcion` text CHARACTER SET latin1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `categoria` */
 
-insert  into `categoria`(`id`,`descripcion`) values (1,'Papeleria'),(2,'Piñateria'),(3,'Electronica'),(4,'Ropa');
+insert  into `categoria`(`id`,`descripcion`) values (1,'Papeleria'),(2,'Pi'),(3,'Electronica'),(4,'Ropa');
 
 /*Table structure for table `indicador` */
 
@@ -36,10 +36,10 @@ DROP TABLE IF EXISTS `indicador`;
 
 CREATE TABLE `indicador` (
   `id` int(10) unsigned NOT NULL,
-  `descripcion` text,
+  `descripcion` text CHARACTER SET latin1,
   `valor_esperado` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `indicador` */
 
@@ -57,7 +57,7 @@ CREATE TABLE `indicadorpersona` (
   KEY `FK_indicadorpersona_persona` (`id_persona`),
   CONSTRAINT `FK_indicadorpersona_indicador` FOREIGN KEY (`id_indicador`) REFERENCES `indicador` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_indicadorpersona_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`cedula`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `indicadorpersona` */
 
@@ -67,19 +67,19 @@ DROP TABLE IF EXISTS `persona`;
 
 CREATE TABLE `persona` (
   `cedula` int(10) unsigned NOT NULL,
-  `nombre` text,
-  `apellido` text,
+  `nombre` text CHARACTER SET latin1,
+  `apellido` text CHARACTER SET latin1,
   `fecha_nac` date DEFAULT NULL,
   `telefono` int(10) unsigned NOT NULL,
   `id_rol` int(10) unsigned NOT NULL,
   PRIMARY KEY (`cedula`),
   KEY `FK_persona_rol` (`id_rol`),
   CONSTRAINT `FK_persona_rol` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `persona` */
 
-insert  into `persona`(`cedula`,`nombre`,`apellido`,`fecha_nac`,`telefono`,`id_rol`) values (10701,'zuleima','grande','2000-12-12',32145698,2),(10702,'narguila','matraz','1995-02-04',3258746,2),(10704,'hector','jojoa','1991-09-19',32144568,2),(10705,'gigante grande','pequeï¿½o','2000-11-11',32145698,2);
+insert  into `persona`(`cedula`,`nombre`,`apellido`,`fecha_nac`,`telefono`,`id_rol`) values (10701,'zuleima','grande','2000-12-12',32145698,2),(10702,'narguila','matraz','1995-02-04',3258746,2),(10704,'hector','jojoa','1991-09-19',32144568,2),(10705,'gigante grande','pequeño','2000-11-11',32145698,2);
 
 /*Table structure for table `producto` */
 
@@ -87,17 +87,17 @@ DROP TABLE IF EXISTS `producto`;
 
 CREATE TABLE `producto` (
   `id` int(10) unsigned NOT NULL,
-  `descripcion` text,
+  `descripcion` text CHARACTER SET latin1,
   `precio` int(11) NOT NULL,
   `id_categoria` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_producto_categoria` (`id_categoria`),
   CONSTRAINT `FK_producto_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `producto` */
 
-insert  into `producto`(`id`,`descripcion`,`precio`,`id_categoria`) values (1,'Cuaderno Grande',3000,1),(2,'Cuaderno Pequeño',2000,1),(3,'Juguetes Relleno',5000,2),(4,'Condon',1500,2),(5,'Resistencia',100,3),(6,'Protoboard',9000,3),(7,'Vestido bebe',16000,4),(8,'Jean levantacola',30000,4);
+insert  into `producto`(`id`,`descripcion`,`precio`,`id_categoria`) values (1,'Cuaderno Grande',3000,1),(2,'Cuaderno Peque',2000,1),(3,'Juguetes Relleno',5000,2),(4,'Condon',1500,2),(5,'Resistencia',100,3),(6,'Protoboard',9000,3),(7,'Vestido bebe',16000,4),(8,'Jean levantacola',30000,4);
 
 /*Table structure for table `rol` */
 
@@ -105,9 +105,9 @@ DROP TABLE IF EXISTS `rol`;
 
 CREATE TABLE `rol` (
   `id` int(10) unsigned NOT NULL,
-  `descripcion` text,
+  `descripcion` text CHARACTER SET latin1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `rol` */
 
@@ -123,7 +123,7 @@ CREATE TABLE `venta` (
   `total` int(10) unsigned NOT NULL,
   `fecha` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `venta` */
 
@@ -140,7 +140,7 @@ CREATE TABLE `ventaproducto` (
   KEY `FK_ventaproducto_producto` (`id_producto`),
   CONSTRAINT `FK_ventaproducto_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_ventaproducto_venta` FOREIGN KEY (`id_venta`) REFERENCES `venta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `ventaproducto` */
 

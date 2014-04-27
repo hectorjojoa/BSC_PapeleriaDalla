@@ -31,6 +31,16 @@ $(function(){
 				$("#descripcion").val("");
 				$("#precio").val("");
 				$("#id_categoria").val("");
+				$.ajax({
+					method : "GET",
+					url : "response/response_producto.php",
+					data: {
+						opcion : "getAllProduct"
+					},
+					success : function(data){
+						$("#container").html(data);
+					}
+				});
 				alert("Agregado bien");
 				console.log(dato);
 			},
@@ -51,7 +61,7 @@ $(function(){
 		}else if($(this).hasClass("btn-primary")){
 			$("#descripcion_" + id).attr("disabled","disabled");
 			$("#precio_" + id).attr("disabled","disabled");
-			$("#id_categoria_" + id).attr("disabled");
+			$("#id_categoria_" + id).attr("disabled","disabled");
 			$.ajax({
 				method : "POST",
 				url : "handler/HandlerProducto.php",
@@ -85,6 +95,16 @@ $(function(){
 				id : id
 			},
 			success : function(dato){
+				$.ajax({
+					method : "GET",
+					url : "response/response_producto.php",
+					data: {
+						opcion : "getAllProduct"
+					},
+					success : function(data){
+						$("#container").html(data);
+					}
+				});
 				console.log(dato);
 				alert("Eliminado bien");
 			},

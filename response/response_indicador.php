@@ -9,7 +9,7 @@
 			<tr>
 				<th>Codigo</th>
 				<th>Descripcion</th>
-				<th>Puntje esperado</th>
+				<th>Puntaje esperado</th>
 				<th>Opciones</th>
 			</tr>";
 		for ($i=0; $i < sizeof($dato); $i++) { 
@@ -33,11 +33,15 @@
 					Crear indicador
 				<span class='glyphicon glyphicon-arrow-down' id='span_opcion_crear_indicador'></span>
 			</button>
-			<div id='new_indicador_campos' data-estado='no_visible'>
-				<input type='number' name='id' id='id' placeholder='id'/>
-				<input type='text' name='descricion' id='descricion' placeholder='descripcion'/>
-				<input type='number' name='valor_esperado' id='valor_esperado' placeholder='valor_esperado'/>
-				<button id='save_new_persona'>Guardar</button>
+			<div id='new_indicador_campos' data-estado='no_visible' style='display: none;'>
+				<table class='table'>
+					<tr>
+						<td><input type='number' name='id' id='id' placeholder='Id' class='form-control'/></td>
+						<td><input type='text' name='descripcion' id='descripcion' placeholder='Descripcion' class='form-control'/></td>
+						<td><input type='number' name='valor_esperado' id='valor_esperado' placeholder='valor_esperado' class='form-control'/></td>
+						<td><button id='save_new_indicador' class='btn-success'>Guardar</button></td>
+					</tr>
+				</table>
 			</div>";
 		return $return;
 	}

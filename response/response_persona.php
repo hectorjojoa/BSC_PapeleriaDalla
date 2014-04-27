@@ -37,13 +37,17 @@
 					Crear Emplado
 				<span class='glyphicon glyphicon-arrow-down' id='span_opcion_crear_persona'></span>
 			</button>
-			<div id='new_persona_campos' data-estado='no_visible'>
-				<input type='number' name='cedula' id='cedula' placeholder='cedula'/>
-				<input type='text' name='nombre' id='nombre' placeholder='nombre'/>
-				<input type='text' name='apellido' id='apellido' placeholder='apellido'/>
-				<input type='date' name='fecha_nac' id='fecha_nac' placeholder='fecha_nacimiento'/>
-				<input type='number' name='telefono' id='telefono' placeholder='telefono'/>
-				<button id='save_new_persona'>Guardar</button>
+			<div id='new_persona_campos' data-estado='no_visible' style='display: none;'>
+				<table class='table'>
+					<tr>
+						<td><input type='number' name='cedula' id='cedula' placeholder='Cedula' class='form-control'/></td>
+						<td><input type='text' name='nombre' id='nombre' placeholder='Nombre' class='form-control'/></td>
+						<td><input type='text' name='apellido' id='apellido' placeholder='Apellido' class='form-control'/></td>
+						<td><input type='date' name='fecha_nac' id='fecha_nac' placeholder='Fecha De Nacimiento' class='form-control'/></td>
+						<td><input type='number' name='telefono' id='telefono' placeholder='Telefono' class='form-control'/></td>
+						<td><button id='save_new_persona' class='btn-success'>Guardar</button></td>
+					</tr>
+				</table>
 			</div>";
 		return $return;
 	}

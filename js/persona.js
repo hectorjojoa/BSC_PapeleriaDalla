@@ -33,6 +33,16 @@ $(function(){
 				$("#apellido").val("");
 				$("#fecha_nac").val("");
 				$("#telefono").val("");
+				$.ajax({
+					method : "GET",
+					url : "response/response_persona.php",
+					data: {
+						opcion : "getAllPerson"
+					},
+					success : function(data){
+						$("#container").html(data);
+					}
+				});
 				alert("Agregado bien");
 				console.log(dato);
 			},
@@ -91,6 +101,16 @@ $(function(){
 				cedula : id
 			},
 			success : function(dato){
+				$.ajax({
+					method : "GET",
+					url : "response/response_persona.php",
+					data: {
+						opcion : "getAllPerson"
+					},
+					success : function(data){
+						$("#container").html(data);
+					}
+				});
 				console.log(dato);
 				alert("Eliminado bien");
 			},

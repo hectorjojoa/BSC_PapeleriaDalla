@@ -8,39 +8,41 @@
 	<link rel="stylesheet" href="css/estilobanner.css">
 	<script type="text/javascript" src="js/index.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-	<!-- SCRIPTS PARA EL FUNCIONAMIENTO DE LOS INCLUDE -->
-		<script type="text/javascript" src="js/persona.js"></script>
-		<script type="text/javascript" src="js/producto.js"></script>
-		<script type="text/javascript" src="js/indicador.js"></script>
-	<!--  FIN  -->
-
 </head>
 <body>
 	<div class="row">
-		<div id ="banner" class="colxs-12">
+		<div id ="banner" class="col-xs-12">
 			<img src="images/banner.jpg" id="img_banner">
 		</div>
 	</div>
-	<div>
-		Bienvenido XX ------------------------------ cerrar session
-	</div>
-	<div class="row" id="container_principal">
-		<section class="col-xs-10">
-			<article>
-				<div id="container">
-					sadgafsd
+	<div class="row">
+		<div class="col-xs-12">
+			<form id="form_login" class="form-horizontal" action="bienvenido.php" method="POST">
+				<fieldset>
+				<legend>Login</legend>
+				<div class="form-group">
+					<label class="col-xs-4 control-label" for="textinput">Cedula</label>  
+					<div class="col-xs-4">
+						<input id="cedula" name="cedula" placeholder="Cedula" class="form-control input-xs" required="" type="text">
+						<span class="help-block">Ingrese su cedula</span>  
+					</div>
 				</div>
-			</article>
-		</section>
-		<aside id="menu" class="col-xs-2">
-			<?php
-				include_once("view/menu_administrador.php");
-			?>
-		</aside>
+				<div class="form-group">
+					<label class="col-xs-4 control-label" for="password">Password</label>
+					<div class="col-xs-4">
+						<input id="password" name="password" placeholder="Password" class="form-control input-xs" required="" type="password">
+						<span class="help-block">Ingrese su password</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-4 control-label" for="entrar"></label>
+					<div class="col-xs-4">
+						<button id="entrar" name="entrar" class="btn btn-primary">Entrar</button>
+					</div>
+				</div>
+				</fieldset>
+			</form>
+		</div>
 	</div>
-	<footer id="pie">
-		<h5>Copiright Blancolino 2014</h5>
-	</footer>
 </body>
 </html>

@@ -30,7 +30,16 @@ $(function(){
 				$("#id").val("");
 				$("#descripcion").val("");
 				$("#valor_esperado").val("");
-				
+				$.ajax({
+					method : "GET",
+					url : "response/response_indicador.php",
+					data: {
+						opcion : "getAllIndicador"
+					},
+					success : function(data){
+						$("#container").html(data);
+					}
+				});
 				alert("Agregado bien");
 				console.log(dato);
 			},
@@ -46,12 +55,12 @@ $(function(){
 		console.log("editando a: " + id);
 		if($(this).hasClass("btn-success")){
 			$("#descripcion_" + id).removeAttr("disabled").focus();
-			$("#valor_esperado" + id).removeAttr("disabled");
+			$("#valor_esperado_" + id).removeAttr("disabled");
 			
 			$(this).attr("class","btn-primary");
 		}else if($(this).hasClass("btn-primary")){
 			$("#descripcion_" + id).attr("disabled","disabled");
-			$("#valor_esperado" + id).attr("disabled","disabled");
+			$("#valor_esperado_" + id).attr("disabled","disabled");
 			$.ajax({
 				method : "POST",
 				url : "handler/HandlerIndicador.php",
@@ -85,6 +94,16 @@ $(function(){
 				id : id
 			},
 			success : function(dato){
+				$.ajax({
+					method : "GET",
+					url : "response/response_indicador.php",
+					data: {
+						opcion : "getAllIndicador"
+					},
+					success : function(data){
+						$("#container").html(data);
+					}
+				});
 				console.log(dato);
 				alert("Eliminado bien");
 			},

@@ -12,6 +12,10 @@
 			return $this->conexion->getTable('producto','id',2);
 		}
 
+		public function getAllCategory(){
+			return $this->conexion->getTable('categoria','id',2);
+		}
+
 		public function alterProduct($datos){
 			return $this->conexion->runStoredProcedure("SP_AlterProducto",1,$datos);
 		}
@@ -36,7 +40,7 @@
 				break;
 		}
 
-		$a =  $handler_producto->alterProducto($datos);
+		$a =  $handler_producto->alterProduct($datos);
 		var_dump($a);
 	}
 ?>

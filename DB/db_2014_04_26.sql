@@ -43,7 +43,7 @@ CREATE TABLE `indicador` (
 
 /*Data for the table `indicador` */
 
-insert  into `indicador`(`id`,`descripcion`,`valor_esperado`) values (2,'Calidad del calidoso',5);
+insert  into `indicador`(`id`,`descripcion`,`valor_esperado`) values (1,'atenciÃ³n al usuario',10),(2,'Ã±Ã± de tt',5),(3,'prueba de indicador',5);
 
 /*Table structure for table `indicadorpersona` */
 
@@ -72,6 +72,7 @@ CREATE TABLE `persona` (
   `fecha_nac` date DEFAULT NULL,
   `telefono` int(10) unsigned NOT NULL,
   `id_rol` int(10) unsigned NOT NULL,
+  `password` text,
   PRIMARY KEY (`cedula`),
   KEY `FK_persona_rol` (`id_rol`),
   CONSTRAINT `FK_persona_rol` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -79,7 +80,7 @@ CREATE TABLE `persona` (
 
 /*Data for the table `persona` */
 
-insert  into `persona`(`cedula`,`nombre`,`apellido`,`fecha_nac`,`telefono`,`id_rol`) values (10701,'zuleima','grande','2000-12-12',32145698,2),(10702,'narguila','matraz','1995-02-04',3258746,2),(10704,'hector','jojoa','1991-09-19',32144568,2),(10705,'gigante grande','pequeño','2000-11-11',32145698,2);
+insert  into `persona`(`cedula`,`nombre`,`apellido`,`fecha_nac`,`telefono`,`id_rol`,`password`) values (10701,'zuleima','grande','2000-12-12',32145698,1,'hector123'),(10702,'narguila','matraz','1995-02-04',3258746,2,'hector123'),(10703,'Eriundo','La Paz','1994-05-31',32158695,2,NULL),(10704,'hector','jojoa','1991-09-19',32144568,1,'hector123'),(10706,'Cosme','Fulanito','1996-02-05',2145682,2,NULL);
 
 /*Table structure for table `producto` */
 
@@ -97,7 +98,7 @@ CREATE TABLE `producto` (
 
 /*Data for the table `producto` */
 
-insert  into `producto`(`id`,`descripcion`,`precio`,`id_categoria`) values (1,'Cuaderno Grande',3000,1),(2,'Cuaderno Peque',2000,1),(3,'Juguetes Relleno',5000,2),(4,'Condon',1500,2),(5,'Resistencia',100,3),(6,'Protoboard',9000,3),(7,'Vestido bebe',16000,4),(8,'Jean levantacola',30000,4);
+insert  into `producto`(`id`,`descripcion`,`precio`,`id_categoria`) values (1,'Cuaderno Grande',3000,1),(2,'Cuaderno Peque',2000,1),(3,'Juguetes Relleno',5000,2),(4,'Condon',1500,2),(5,'Resistencia',100,3),(6,'Protoboard',9000,3),(7,'Vestido bebe',16000,4),(8,'Jean levantacola1',29999,4);
 
 /*Table structure for table `rol` */
 

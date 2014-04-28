@@ -38,7 +38,7 @@
 					<tr>
 						<td><input type='number' name='id' id='id' placeholder='Id' class='form-control'/></td>
 						<td><input type='text' name='descripcion' id='descripcion' placeholder='Descripcion' class='form-control'/></td>
-						<td><input type='number' name='valor_esperado' id='valor_esperado' placeholder='valor_esperado' class='form-control'/></td>
+						<td><input type='number' name='valor_esperado' id='valor_esperado' placeholder='Valor Esperado' class='form-control'/></td>
 						<td><button id='save_new_indicador' class='btn-success'>Guardar</button></td>
 					</tr>
 				</table>

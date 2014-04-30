@@ -25,7 +25,8 @@ $(function(){
 				nombre : $("#nombre").val(),
 				apellido : $("#apellido").val(),
 				fecha_nac : $("#fecha_nac").val(),
-				telefono : $("#telefono").val()
+				telefono : $("#telefono").val(),
+				id_rol : $("#id_rol").val()
 			},
 			success : function(dato){
 				$("#cedula").val("");
@@ -61,12 +62,14 @@ $(function(){
 			$("#apellido_" + id).removeAttr("disabled");
 			$("#fecha_nac_" + id).removeAttr("disabled");
 			$("#telefono_" + id).removeAttr("disabled");
+			$("#id_rol_" + id).removeAttr("disabled");
 			$(this).attr("class","btn-primary");
 		}else if($(this).hasClass("btn-primary")){
 			$("#nombre_" + id).attr("disabled","disabled");
 			$("#apellido_" + id).attr("disabled","disabled");
 			$("#fecha_nac_" + id).attr("disabled","disabled");
 			$("#telefono_" + id).attr("disabled","disabled");
+			$("#id_rol_" + id).attr("disabled","disabled");
 			$.ajax({
 				method : "POST",
 				url : "handler/HandlerPersona.php",
@@ -76,7 +79,8 @@ $(function(){
 					nombre : $("#nombre_" + id).val(),
 					apellido : $("#apellido_" + id).val(),
 					fecha_nac : $("#fecha_nac_" + id).val(),
-					telefono : $("#telefono_" + id).val()
+					telefono : $("#telefono_" + id).val(),
+					id_rol : $("#id_rol_" + id).val()
 				},
 				success : function(dato){
 					console.log(dato);

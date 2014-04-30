@@ -12,6 +12,7 @@
 				<th>Apellido</th>
 				<th>Fecha Nacimiento</th>
 				<th>Telefono</th>
+				<th>Rol</th>
 				<th>Opciones</th>
 			</tr>";
 		for ($i=0; $i < sizeof($dato); $i++) { 
@@ -21,6 +22,7 @@
 				<td><input type='text' class='form-control' id='apellido_".$dato[$i]['cedula']."' name='apellido' value='".$dato[$i]['apellido']."' disabled='disabled' /></td>
 				<td><input type='date' class='form-control' id='fecha_nac_".$dato[$i]['cedula']."' name='fecha_nac' value='".$dato[$i]['fecha_nac']."' disabled='disabled' /></td>
 				<td><input type='text' class='form-control' id='telefono_".$dato[$i]['cedula']."' name='telefono' value='".$dato[$i]['telefono']."' disabled='disabled' /></td>
+				<td>".getRolPersona($dato[$i]['id_rol'],$dato[$i]['cedula'])."</td>
 				<td>
 					<button data-persona-edit='".$dato[$i]['cedula']."' class='btn-success'>
 						<span class='glyphicon glyphicon-pencil'></span>
@@ -45,12 +47,29 @@
 						<td><input type='text' name='apellido' id='apellido' placeholder='Apellido' class='form-control'/></td>
 						<td><input type='date' name='fecha_nac' id='fecha_nac' placeholder='Fecha De Nacimiento' class='form-control'/></td>
 						<td><input type='number' name='telefono' id='telefono' placeholder='Telefono' class='form-control'/></td>
+						<td>".getRolPersona(0,0)."</td>
 						<td><button id='save_new_persona' class='btn-success'>Guardar</button></td>
 					</tr>
 				</table>
 			</div>";
 		return $return;
 	}
+
+	function getRolPersona($id_rol,$cedula){
+		global $handler_persona;
+		if($id_rol == 0){
+			$return = "<select id='id_rol' name='id_rol' class='form-control'>";
+		}else{
+			$return = "<select id='id_rol_".$cedula."' name='id_rol_".$cedula."' class='form-control' disabled='disabled'>";
+		}
+		$dato = $handler_persona->getAllRol();
+		for($i = 0; $i < sizeof($dato); $i++){
+			$return .= "<option value='".$dato[$i]['id']."' ".(($dato[$i]['id'] == $id_rol)?"selected":" ").">".$dato[$i]['descripcion']."</option>";
+		}
+		$return .= "</select>";
+		return $return;
+	}
+
 
 	if (isset($_REQUEST['opcion'])){
 		switch ($_REQUEST['opcion']) {

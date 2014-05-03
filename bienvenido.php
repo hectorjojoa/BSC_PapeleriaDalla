@@ -9,6 +9,7 @@
 <head>
 	<title>Papeleria</title>
 	<script src="js/jquery-2.1.0.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/estilobanner.css">
@@ -21,6 +22,7 @@
 					<script type="text/javascript" src="js/persona.js"></script>
 					<script type="text/javascript" src="js/producto.js"></script>
 					<script type="text/javascript" src="js/indicador.js"></script>
+					<script type="text/javascript" src="js/evaluar.js"></script>
 				<!--  FIN  -->';
 		}
 	?>

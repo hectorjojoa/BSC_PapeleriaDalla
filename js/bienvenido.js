@@ -37,7 +37,7 @@ $(function(){
 		});
 	});
 
-$("#administrar_indicador").on("click",function(){
+	$("#administrar_indicador").on("click",function(){
 		$.ajax({
 			method : "GET",
 			url : "response/response_indicador.php",
@@ -49,4 +49,17 @@ $("#administrar_indicador").on("click",function(){
 			}
 		});
 	});
+
+	$("#evaluar_persona").on("click",function(){
+		$.ajax({
+			method : "GET",
+			url : "response/response_evaluar.php",
+			data: {
+				opcion : "getAllPanel"
+			},
+			success : function(data){
+				$("#container").html(data);
+			}
+		});
+	});	
 });

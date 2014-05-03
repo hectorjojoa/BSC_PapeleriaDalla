@@ -45,7 +45,7 @@
 						<td><input type='number' name='cedula' id='cedula' placeholder='Cedula' class='form-control'/></td>
 						<td><input type='text' name='nombre' id='nombre' placeholder='Nombre' class='form-control'/></td>
 						<td><input type='text' name='apellido' id='apellido' placeholder='Apellido' class='form-control'/></td>
-						<td><input type='date' name='fecha_nac' id='fecha_nac' placeholder='Fecha De Nacimiento' class='form-control'/></td>
+						<td><input type='text' name='fecha_nac' id='fecha_nac' placeholder='Fecha De Nacimiento' class='form-control datepicker'/></td>
 						<td><input type='number' name='telefono' id='telefono' placeholder='Telefono' class='form-control'/></td>
 						<td>".getRolPersona(0,0)."</td>
 						<td><button id='save_new_persona' class='btn-success'>Guardar</button></td>

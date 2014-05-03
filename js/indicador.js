@@ -1,7 +1,5 @@
 $(function(){
 
-	//$("#new_indicador_campos").hide();
-
 	$("#container").delegate("#mostrar_crear_indicador","click",function(){
 		if($("#new_indicador_campos").data("estado") == "visible"){
 			$("#new_indicador_campos").hide();

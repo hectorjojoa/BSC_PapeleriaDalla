@@ -83,7 +83,7 @@ CREATE TABLE `persona` (
 
 /*Data for the table `persona` */
 
-insert  into `persona`(`cedula`,`nombre`,`apellido`,`fecha_nac`,`telefono`,`id_rol`,`password`) values (10701,'zuleima','grande','2000-12-12',32145698,1,'hector123'),(10702,'narguila','matraz','1995-02-04',3258746,2,'hector123'),(10703,'Eriundo','La Paz','1994-05-31',32158695,2,NULL),(10704,'hector','jojoa','1991-09-19',32144568,1,'hector123'),(10706,'Cosme','Fulanito','1996-02-05',2145682,2,NULL);
+insert  into `persona`(`cedula`,`nombre`,`apellido`,`fecha_nac`,`telefono`,`id_rol`,`password`) values (10701,'zuleima','grande','2000-12-12',32145698,1,'hector123'),(10702,'narguila','matraz','1995-02-04',3258746,2,'hector123'),(10703,'Eriundo','La Paz','1994-05-31',32158695,2,'hector123'),(10704,'hector','jojoa','1991-09-19',32144568,1,'hector123'),(10706,'Cosme','Fulanito','1996-02-05',2145682,2,NULL);
 
 /*Table structure for table `producto` */
 

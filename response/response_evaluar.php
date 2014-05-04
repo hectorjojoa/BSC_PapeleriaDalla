@@ -69,9 +69,9 @@
 		return $return;
 	}
 
-	function getPersonByIndicador($id_indicador){
+	function getPersonByIndicadorFecha($id_indicador,$fecha){
 		global $handler_evaluar;
-		$persona = $handler_evaluar->getPersonByIndicador($id_indicador);
+		$persona = $handler_evaluar->getPersonByIndicadorFecha($id_indicador,$fecha);
 		$return = "<table class='table'>";
 			$return .= "
 			<tr>
@@ -91,13 +91,38 @@
 		return $return;
 	}
 
+	function getIndicadorByPersonaFecha($cedula,$fecha){
+		global $handler_evaluar;
+		$indicador = $handler_evaluar->getIndicadorByPersonaFecha($cedula,$fecha);
+		$return = "<table class='table'>";
+			$return .= "
+			<tr>
+				<th>Id Indicador</th>
+				<th>Descripcion</th>
+				<th>Indicador</th>
+			</tr>";
+		for ($i=0; $i <sizeof($indicador) ; $i++) { 
+			$return .= "
+			<tr>
+				<td>".$indicador[$i]['id_indicador']."</td>
+				<td>".$indicador[$i]['descripcion']."</td>
+				<td>".$indicador[$i]['valor_obtenido']."</td>
+			</tr>";
+		}
+		$return .= "</table>";
+		return $return;
+	}
+
 	if (isset($_REQUEST['opcion'])){
 		switch ($_REQUEST['opcion']) {
 			case 'getAllPanel':
 				echo getAllPanel();
 				break;
-			case 'loadPersonByIndicador':
-				echo getPersonByIndicador($_REQUEST['id_indicador']);
+			case 'loadPersonByIndicadorFecha':
+				echo getPersonByIndicadorFecha($_REQUEST['id_indicador'],$_REQUEST['fecha']);
+				break;
+			case 'getIndicadorByPersonaFecha':
+				echo getIndicadorByPersonaFecha($_REQUEST['cedula'],$_REQUEST['fecha']);
 				break;
 			default:
 				echo "Bienvenido a la seccion de administrar indicador";

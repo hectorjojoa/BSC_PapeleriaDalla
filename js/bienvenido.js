@@ -70,4 +70,5 @@ $(function(){
 			endDate : '+0d'
 		});
 	});
+	
 });

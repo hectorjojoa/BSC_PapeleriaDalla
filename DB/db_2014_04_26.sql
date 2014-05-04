@@ -43,7 +43,7 @@ CREATE TABLE `indicador` (
 
 /*Data for the table `indicador` */
 
-insert  into `indicador`(`id`,`descripcion`,`valor_esperado`) values (1,'atenciÃ³n al usuario',10),(2,'FFF de RR',5),(3,'prueba de indicador',5),(4,'ventas realizadas',5);
+insert  into `indicador`(`id`,`descripcion`,`valor_esperado`) values (1,'atenciÃ³n al usuario',10),(2,'FFF de RR',5),(3,'prueba de indicador',5),(4,'ventas realizadas',8);
 
 /*Table structure for table `indicadorpersona` */
 
@@ -62,7 +62,7 @@ CREATE TABLE `indicadorpersona` (
 
 /*Data for the table `indicadorpersona` */
 
-insert  into `indicadorpersona`(`id_indicador`,`id_persona`,`fecha`,`valor_obtenido`) values (1,10701,'2014-05-01',5),(1,10702,'2014-05-01',4),(1,10703,'2014-05-01',3);
+insert  into `indicadorpersona`(`id_indicador`,`id_persona`,`fecha`,`valor_obtenido`) values (1,10701,'2014-05-01',9),(1,10701,'2014-05-02',8),(1,10702,'2014-05-01',2),(1,10703,'2014-05-01',9),(1,10706,'2014-05-01',5),(2,10702,'2014-05-01',2),(2,10702,'2014-05-02',5),(2,10704,'2014-05-01',3),(3,10702,'2014-05-01',5),(4,10702,'2014-05-01',7),(4,10706,'2014-05-01',3);
 
 /*Table structure for table `persona` */
 
@@ -252,6 +252,36 @@ BEGIN
 	    WHEN '3' THEN 
 		DELETE FROM producto WHERE id = _id;
 		SELECT _id;
+	    ELSE
+		SELECT '0';
+	END CASE;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `SP_SaveEvaluacion` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `SP_SaveEvaluacion` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_SaveEvaluacion`(
+			in _opcion text,
+			in _id_indicador text,
+			in _cedula text,
+			in _fecha text,
+			in _valor_obtenido text)
+BEGIN
+	CASE _opcion
+	    WHEN 'i' THEN 
+		INSERT INTO indicadorpersona(id_indicador,id_persona,fecha,valor_obtenido)
+			values(_id_indicador,_cedula,_fecha,_valor_obtenido);
+		SELECT '1';
+	    when 'u' then
+		update indicadorpersona set valor_obtenido = _valor_obtenido
+		where id_indicador = _id_indicador 
+		    AND id_persona = _cedula
+		    and fecha = _fecha;
+		select '1';
 	    ELSE
 		SELECT '0';
 	END CASE;

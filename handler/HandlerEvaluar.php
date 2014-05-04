@@ -38,5 +38,10 @@
 
 			return $this->conexion->runQuery($query);
 		}
+
+		public function saveIndicadorPersona($datos){
+			$resul = $this->conexion->runStoredProcedure("SP_SaveEvaluacion",1,$datos);
+			return $resul[0];
+		}
 	}
 ?>

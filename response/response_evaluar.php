@@ -49,7 +49,7 @@
 		$return = "<select id='select_indicador' class='form-control'>";
 			$return .= "<option value='-1'>Seleccione</option>";
 		for($i = 0; $i < sizeof($indicador); $i++){
-			$return .= "<option value='".$indicador[$i]["id"]."'>".$indicador[$i]["descripcion"]."</option>";
+			$return .= "<option value='".$indicador[$i]["id"]."' data-valor-esperado='".$indicador[$i]['valor_esperado']."'>".$indicador[$i]["descripcion"]."</option>";
 		}
 		$return .="</select>";
 		return $return;
@@ -84,7 +84,9 @@
 			<tr>
 				<td>".$persona[$i]['cedula']."</td>
 				<td>".$persona[$i]['nombre_persona']."</td>
-				<td>".$persona[$i]['valor_obtenido']."</td>
+				<td>
+					<input type='text' data-cedula='".$persona[$i]["cedula"]."' class= 'slider' value='".$persona[$i]['valor_obtenido']."' data-accion='".((empty($persona[$i]["valor_obtenido"])?"i":"u"))."' />
+				</td>
 			</tr>";
 		}
 		$return .= "</table>";
@@ -113,6 +115,12 @@
 		return $return;
 	}
 
+	function saveIndicadorPersona($accion,$id_indicador,$cedula,$fecha,$valor_obtenido){
+		global $handler_evaluar;
+		$datos = array($accion,$id_indicador,$cedula,$fecha,$valor_obtenido);
+		return $handler_evaluar->saveIndicadorPersona($datos);
+	}
+
 	if (isset($_REQUEST['opcion'])){
 		switch ($_REQUEST['opcion']) {
 			case 'getAllPanel':
@@ -123,6 +131,9 @@
 				break;
 			case 'getIndicadorByPersonaFecha':
 				echo getIndicadorByPersonaFecha($_REQUEST['cedula'],$_REQUEST['fecha']);
+				break;
+			case 'saveIndicadorPersona':
+				echo saveIndicadorPersona($_REQUEST["accion"],$_REQUEST["id_indicador"],$_REQUEST["cedula"],$_REQUEST["fecha"],$_REQUEST["valor_obtenido"]);
 				break;
 			default:
 				echo "Bienvenido a la seccion de administrar indicador";

@@ -26,6 +26,7 @@ $(function(){
 				},
 				success : function(data){
 					$("#evaluar_indicador").html(data);
+
 				}
 			});
 		}
@@ -35,6 +36,9 @@ $(function(){
 		if($("#fecha_indicador").val() == ""){
 			alert("Seleccione la fecha");
 		}else{
+			var selected = $(this).find('option:selected');
+       		var extra = selected.data('valor-esperado');
+       		$(this).data("valor-esperado",extra);
 			$.ajax({
 				method : "GET",
 				url : "response/response_evaluar.php",
@@ -45,6 +49,31 @@ $(function(){
 				},
 				success : function(data){
 					$("#evaluar_persona").html(data);
+					$(".slider").each(function(){
+						$(this).slider({
+							max : $("#select_indicador").data("valor-esperado"),
+							min : 0,
+							step : 1,
+							selection : 'before',
+							value : $(this).val()
+						}).on('slideStop', function(ev){
+							$.ajax({
+								method : "GET",
+								url : "response/response_evaluar.php",
+								data : {
+									opcion : "saveIndicadorPersona",
+									accion : $(this).data("accion"),
+									id_indicador : $("#select_indicador").val(),
+									cedula : $(this).data("cedula"),
+									fecha : $("#fecha_indicador").val(),
+									valor_obtenido : $(this).data("slider").getValue()
+								},
+								success : function(dato){
+									console.log(dato);
+								}
+							});
+						});
+					});
 				}
 			});
 		}

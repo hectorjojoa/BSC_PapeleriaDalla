@@ -62,4 +62,12 @@ $(function(){
 			}
 		});
 	});	
+
+	$("#container").delegate(".datepicker","focusin",function(){
+		$(this).datepicker({
+			format :'yyyy-mm-dd',
+			startDate : '-1w',
+			endDate : '+0d'
+		});
+	});
 });

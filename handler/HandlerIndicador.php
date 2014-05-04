@@ -32,7 +32,7 @@
 				$datos = array(3,$_POST['id'],'0','0');
 				break;
 			default:
-				echo "Otra opcion: ".$_POST['opcion'];
+				echo "Otra opcion en indicador: ".$_POST['opcion'];
 				break;
 		}
 

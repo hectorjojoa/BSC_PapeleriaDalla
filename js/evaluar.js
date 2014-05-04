@@ -1,11 +1,26 @@
 $(function(){
-	console.log("entro 1");
-	$("#container").delegate(".datepicker","focusin",function(){
-		console.log("entro 2");
-		$(this).datepicker({
-			format :'yyyy-mm-dd',
-			startDate : '-1w',
-			endDate : '+0d'
-		});
+	$("#container").delegate("#select_indicador","change",function(){
+		if($("#fecha_indicador").val() == ""){
+			alert("Seleccione la fecha");
+		}else{
+			$.ajax({
+				method : "GET",
+				url : "response/response_evaluar.php",
+				data: {
+					opcion : "loadPersonByIndicador",
+					id_indicador : $("#select_indicador").val()
+				},
+				success : function(data){
+					$("#evaluar_persona").html(data);
+				}
+			});
+		}
 	});
+
+	$("#container").delegate("#select_persona","change",function(){
+		if($("#fecha_indicador").val() == ""){
+			alert("Seleccione la fecha");
+		}
+	});
+
 });

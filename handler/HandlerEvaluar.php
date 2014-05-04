@@ -22,5 +22,13 @@
 		public function getPersona(){
 			return $this->handler_persona->getAllPerson();
 		}
+
+		public function getPersonByIndicador($id_indicador){
+			$query = "	SELECT P.cedula,CONCAT(P.apellido,' ',P.nombre)AS 'nombre_persona',IP.valor_obtenido
+					  	FROM persona P
+							LEFT JOIN indicadorpersona IP ON P.cedula = IP.id_persona AND IP.id_indicador = $id_indicador";
+
+			return $this->conexion->runQuery($query);
+		}
 	}
 ?>

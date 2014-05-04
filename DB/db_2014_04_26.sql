@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v8.71 
-MySQL - 5.5.34 : Database - papeleria_bsc
+MySQL - 5.6.16 : Database - papeleria_bsc
 *********************************************************************
 */
 
@@ -43,7 +43,7 @@ CREATE TABLE `indicador` (
 
 /*Data for the table `indicador` */
 
-insert  into `indicador`(`id`,`descripcion`,`valor_esperado`) values (1,'atenciÃ³n al usuario',10),(2,'Ã±Ã± de tt',5),(3,'prueba de indicador',5);
+insert  into `indicador`(`id`,`descripcion`,`valor_esperado`) values (1,'atenciÃ³n al usuario',10),(2,'FFF de RR',5),(3,'prueba de indicador',5),(4,'ventas realizadas',5);
 
 /*Table structure for table `indicadorpersona` */
 
@@ -52,14 +52,17 @@ DROP TABLE IF EXISTS `indicadorpersona`;
 CREATE TABLE `indicadorpersona` (
   `id_indicador` int(10) unsigned NOT NULL,
   `id_persona` int(10) unsigned NOT NULL,
+  `fecha` date NOT NULL,
   `valor_obtenido` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_indicador`,`id_persona`),
+  PRIMARY KEY (`id_indicador`,`id_persona`,`fecha`),
   KEY `FK_indicadorpersona_persona` (`id_persona`),
   CONSTRAINT `FK_indicadorpersona_indicador` FOREIGN KEY (`id_indicador`) REFERENCES `indicador` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_indicadorpersona_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`cedula`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `indicadorpersona` */
+
+insert  into `indicadorpersona`(`id_indicador`,`id_persona`,`fecha`,`valor_obtenido`) values (1,10701,'2014-05-01',5),(1,10702,'2014-05-01',4),(1,10703,'2014-05-01',3);
 
 /*Table structure for table `persona` */
 
@@ -98,7 +101,7 @@ CREATE TABLE `producto` (
 
 /*Data for the table `producto` */
 
-insert  into `producto`(`id`,`descripcion`,`precio`,`id_categoria`) values (1,'Cuaderno Grande',3000,1),(2,'Cuaderno Peque',2000,1),(3,'Juguetes Relleno',5000,2),(4,'Condon',1500,2),(5,'Resistencia',100,3),(6,'Protoboard',9000,3),(7,'Vestido bebe',16000,4),(8,'Jean levantacola1',29999,4);
+insert  into `producto`(`id`,`descripcion`,`precio`,`id_categoria`) values (1,'Cuaderno Grande',3000,2),(2,'Cuaderno Peque',2000,1),(3,'Juguetes Relleno',5000,2),(5,'Resistencia',100,3),(6,'Protoboard',9000,3),(7,'Vestido bebe',16000,4),(8,'Jean levantacola1',29999,4);
 
 /*Table structure for table `rol` */
 
@@ -145,7 +148,7 @@ CREATE TABLE `ventaproducto` (
 
 /*Data for the table `ventaproducto` */
 
-insert  into `ventaproducto`(`id_venta`,`id_producto`) values (1,1),(2,1),(1,2),(1,3),(2,4),(2,5);
+insert  into `ventaproducto`(`id_venta`,`id_producto`) values (1,1),(2,1),(1,2),(1,3),(2,5);
 
 /* Procedure structure for procedure `SP_AlterIndicador` */
 

@@ -28,7 +28,7 @@ CREATE TABLE `categoria` (
 
 /*Data for the table `categoria` */
 
-insert  into `categoria`(`id`,`descripcion`) values (1,'Papeleria'),(2,'Pi'),(3,'Electronica'),(4,'Ropa');
+insert  into `categoria`(`id`,`descripcion`) values (1,'Papeleria'),(2,'cosmeticos'),(3,'Electronica'),(4,'mantenimiento');
 
 /*Table structure for table `indicador` */
 
@@ -43,7 +43,7 @@ CREATE TABLE `indicador` (
 
 /*Data for the table `indicador` */
 
-insert  into `indicador`(`id`,`descripcion`,`valor_esperado`) values (1,'atenciÃ³n al usuario',10),(2,'FFF de RR',5),(3,'prueba de indicador',5),(4,'ventas realizadas',8);
+insert  into `indicador`(`id`,`descripcion`,`valor_esperado`) values (1,'numero de llegadas tarde ',3),(2,'calificacion de atencion al usuario',5),(3,'rendimineto del empleado',5),(4,'ventas realizadas',8);
 
 /*Table structure for table `indicadorpersona` */
 
@@ -62,7 +62,7 @@ CREATE TABLE `indicadorpersona` (
 
 /*Data for the table `indicadorpersona` */
 
-insert  into `indicadorpersona`(`id_indicador`,`id_persona`,`fecha`,`valor_obtenido`) values (1,10701,'2014-05-01',9),(1,10701,'2014-05-02',8),(1,10702,'2014-05-01',2),(1,10703,'2014-05-01',9),(1,10706,'2014-05-01',5),(2,10702,'2014-05-01',2),(2,10702,'2014-05-02',5),(2,10704,'2014-05-01',3),(3,10702,'2014-05-01',5),(4,10702,'2014-05-01',7),(4,10706,'2014-05-01',3);
+insert  into `indicadorpersona`(`id_indicador`,`id_persona`,`fecha`,`valor_obtenido`) values (1,10701,'2014-05-01',2),(1,10701,'2014-05-02',8),(1,10702,'2014-05-01',0),(1,10703,'2014-05-01',1),(1,10704,'2014-05-01',2),(1,10706,'2014-05-01',1),(2,10701,'2014-05-01',2),(2,10702,'2014-05-01',2),(2,10702,'2014-05-02',5),(2,10703,'2014-05-01',3),(2,10704,'2014-05-01',4),(3,10702,'2014-05-01',5),(4,10702,'2014-05-01',7),(4,10706,'2014-05-01',3);
 
 /*Table structure for table `persona` */
 
@@ -83,7 +83,7 @@ CREATE TABLE `persona` (
 
 /*Data for the table `persona` */
 
-insert  into `persona`(`cedula`,`nombre`,`apellido`,`fecha_nac`,`telefono`,`id_rol`,`password`) values (10701,'zuleima','grande','2000-12-12',32145698,1,'hector123'),(10702,'narguila','matraz','1995-02-04',3258746,2,'hector123'),(10703,'Eriundo','La Paz','1994-05-31',32158695,2,'hector123'),(10704,'hector','jojoa','1991-09-19',32144568,1,'hector123'),(10706,'Cosme','Fulanito','1996-02-05',2145682,2,NULL);
+insert  into `persona`(`cedula`,`nombre`,`apellido`,`fecha_nac`,`telefono`,`id_rol`,`password`) values (10701,'zuleima','grande','2000-12-12',32145698,2,'hector123'),(10702,'narguila','matraz','1995-02-04',3258746,2,'hector123'),(10703,'Eriundo','La Paz','1994-05-31',32158695,2,'hector123'),(10704,'Hector','jojoa','1991-09-19',32144568,1,'hector123'),(10706,'Cosme','Fulanito','1996-02-05',2145682,2,NULL),(10707,'Pedro','Jojoa','2013-10-23',2147483647,2,NULL);
 
 /*Table structure for table `producto` */
 
@@ -101,7 +101,7 @@ CREATE TABLE `producto` (
 
 /*Data for the table `producto` */
 
-insert  into `producto`(`id`,`descripcion`,`precio`,`id_categoria`) values (1,'Cuaderno Grande',3000,2),(2,'Cuaderno Peque',2000,1),(3,'Juguetes Relleno',5000,2),(5,'Resistencia',100,3),(6,'Protoboard',9000,3),(7,'Vestido bebe',16000,4),(8,'Jean levantacola1',29999,4);
+insert  into `producto`(`id`,`descripcion`,`precio`,`id_categoria`) values (1,'Cuaderno Grande',3000,1),(2,'Cuaderno Peque',2000,1),(3,'Juguetes Relleno',5000,2),(5,'Resistencia',100,3),(6,'Protoboard',9000,3),(7,'Vestido bebe',16000,4),(8,'Jean levantacola1',29999,4);
 
 /*Table structure for table `rol` */
 
@@ -131,7 +131,7 @@ CREATE TABLE `venta` (
 
 /*Data for the table `venta` */
 
-insert  into `venta`(`id`,`id_persona`,`total`,`fecha`) values (1,2,50000,'2014-04-14'),(2,2,35000,'2014-04-15');
+insert  into `venta`(`id`,`id_persona`,`total`,`fecha`) values (1,0,110000,'2014-05-03'),(2,10701,5042,'2014-05-01'),(3,10701,4000,'2014-05-02'),(4,10703,12500,'2014-05-01');
 
 /*Table structure for table `ventaproducto` */
 
@@ -147,8 +147,6 @@ CREATE TABLE `ventaproducto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `ventaproducto` */
-
-insert  into `ventaproducto`(`id_venta`,`id_producto`) values (1,1),(2,1),(1,2),(1,3),(2,5);
 
 /* Procedure structure for procedure `SP_AlterIndicador` */
 
@@ -251,6 +249,42 @@ BEGIN
 		SELECT _id;
 	    WHEN '3' THEN 
 		DELETE FROM producto WHERE id = _id;
+		SELECT _id;
+	    ELSE
+		SELECT '0';
+	END CASE;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `SP_AlterVenta` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `SP_AlterVenta` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_AlterVenta`(
+			IN _opcion INT,
+			IN _id INT,
+			IN _id_persona INT,
+			IN _total INT,
+			IN _fecha DATE)
+BEGIN
+	CASE _opcion
+	    WHEN '1' THEN 
+		INSERT INTO venta(id,id_persona,total,fecha)
+			VALUES(_id,_id_persona,_total,_fecha);
+		SELECT _id;
+	    WHEN '2' THEN 
+		UPDATE venta SET
+			id = _id,
+			id_persona = _id_persona,
+			total = _total,
+			fecha = _fecha
+			
+		WHERE id = _id;
+		SELECT _id;
+	    WHEN '3' THEN 
+		DELETE FROM venta WHERE id = _id;
 		SELECT _id;
 	    ELSE
 		SELECT '0';

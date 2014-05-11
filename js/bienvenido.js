@@ -24,6 +24,18 @@ $(function(){
 			}
 		});
 	});
+	$("#administrar_venta").on("click",function(){
+		$.ajax({
+			method : "GET",
+			url : "response/response_venta.php",
+			data: {
+				opcion : "getAllVenta"
+			},
+			success : function(data){
+				$("#container").html(data);
+			}
+		});
+	});
 	$("#administrar_producto").on("click",function(){
 		$.ajax({
 			method : "GET",

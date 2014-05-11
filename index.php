@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="js/index.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
+<body background="images/fondo.jpg">
 	<div class="row">
 		<div id ="banner" class="col-xs-12">
 			<img src="images/banner.jpg" id="img_banner">
@@ -19,18 +19,18 @@
 		<div class="col-xs-12">
 			<form id="form_login" class="form-horizontal" action="bienvenido.php" method="POST">
 				<fieldset>
-				<legend>Login</legend>
+				<legend align="center">SING IN</legend>
 				<div class="form-group">
 					<label class="col-xs-4 control-label" for="textinput">Cedula</label>  
 					<div class="col-xs-4">
-						<input id="cedula" name="cedula" placeholder="Cedula" class="form-control input-xs" required="" type="text">
+						<input maxlength="6"  id="cedula" name="cedula" placeholder="Cedula" class="form-control input-xs" required="" type="text">
 						<span class="help-block">Ingrese su cedula</span>  
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-xs-4 control-label" for="password">Password</label>
 					<div class="col-xs-4">
-						<input id="password" name="password" placeholder="Password" class="form-control input-xs" required="" type="password">
+						<input maxlength="10"  id="password" name="password" placeholder="Password" class="form-control input-xs" required="" type="password">
 						<span class="help-block">Ingrese su password</span>
 					</div>
 				</div>

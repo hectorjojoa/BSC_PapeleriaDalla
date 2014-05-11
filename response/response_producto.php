@@ -1,4 +1,4 @@
-<?php
+maxlength="10" <?php
 	include_once("../handler/HandlerProducto.php");
 	$handler_producto = new HandlerProducto();
 	function getAllProducto(){
@@ -15,9 +15,9 @@
 			</tr>";
 		for ($i=0; $i < sizeof($dato); $i++) { 
 			$return .= "<tr>
-				<td><input type='number' class='form-control' id='id_".$dato[$i]['id']."' name='id' value='".$dato[$i]['id']."' disabled='disabled' /></td>
-				<td><input type='text' class='form-control' id='descripcion_".$dato[$i]['id']."' name='descripcion' value='".$dato[$i]['descripcion']."' disabled='disabled' /></td>
-				<td><input type='number' class='form-control' id='precio_".$dato[$i]['id']."' name='precio' value='".$dato[$i]['precio']."' disabled='disabled' /></td>
+				<td><input maxlength='10' type='number' class='form-control' id='id_".$dato[$i]['id']."' name='id' value='".$dato[$i]['id']."' disabled='disabled' /></td>
+				<td><input maxlength='10' type='text' class='form-control' id='descripcion_".$dato[$i]['id']."' name='descripcion' value='".$dato[$i]['descripcion']."' disabled='disabled' /></td>
+				<td><input maxlength='10' type='number' class='form-control' id='precio_".$dato[$i]['id']."' name='precio' value='".$dato[$i]['precio']."' disabled='disabled' /></td>
 				<td>".getCategoriaProducto($dato[$i]['id'],$dato[$i]['id_categoria'])."</td>
 				
 				<td>
@@ -39,9 +39,9 @@
 				<div id='new_producto_campos' data-estado='no_visible' style='display: none;'>
 					<table class='table'>
 						<tr>
-							<td><input type='number' name='id' id='id' placeholder='Id' class='form-control'/></td>
-							<td><input type='text' name='descripcion' id='descripcion' placeholder='Descripcion' class='form-control'/></td>
-							<td><input type='number' name='precio' id='precio' placeholder='Precio' class='form-control'/></td>
+							<td><input maxlength='10' type='number' name='id' id='id' placeholder='Id' class='form-control'/></td>
+							<td><input maxlength='10' type='text' name='descripcion' id='descripcion' placeholder='Descripcion' class='form-control'/></td>
+							<td><input maxlength='10' type='number' name='precio' id='precio' placeholder='Precio' class='form-control'/></td>
 							<td>".getCategoriaProducto(0,0)."</td>
 							<td><button id='save_new_producto' class='btn-success'>Guardar</button></td>
 						</tr>

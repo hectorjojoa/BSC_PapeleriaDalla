@@ -85,7 +85,7 @@
 				<td>".$persona[$i]['cedula']."</td>
 				<td>".$persona[$i]['nombre_persona']."</td>
 				<td>
-					<input type='text' data-cedula='".$persona[$i]["cedula"]."' class= 'slider' value='".$persona[$i]['valor_obtenido']."' data-accion='".((empty($persona[$i]["valor_obtenido"])?"i":"u"))."' />
+					<input maxlength='10' type='text' data-cedula='".$persona[$i]["cedula"]."' class= 'slider' value='".$persona[$i]['valor_obtenido']."' data-accion='".((empty($persona[$i]["valor_obtenido"])?"i":"u"))."' />
 				</td>
 			</tr>";
 		}

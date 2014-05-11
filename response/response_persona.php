@@ -17,15 +17,15 @@
 			</tr>";
 		for ($i=0; $i < sizeof($dato); $i++) { 
 			$return .= "<tr>
-				<td><input type='number' class='form-control' id='cedula_".$dato[$i]['cedula']."' name='cedula' value='".$dato[$i]['cedula']."' disabled='disabled' /></td>
-				<td><input type='text' class='form-control' id='nombre_".$dato[$i]['cedula']."' name='nombre' value='".$dato[$i]['nombre']."' disabled='disabled' /></td>
-				<td><input type='text' class='form-control' id='apellido_".$dato[$i]['cedula']."' name='apellido' value='".$dato[$i]['apellido']."' disabled='disabled' /></td>
-				<td><input type='date' class='form-control' id='fecha_nac_".$dato[$i]['cedula']."' name='fecha_nac' value='".$dato[$i]['fecha_nac']."' disabled='disabled' /></td>
-				<td><input type='text' class='form-control' id='telefono_".$dato[$i]['cedula']."' name='telefono' value='".$dato[$i]['telefono']."' disabled='disabled' /></td>
+				<td><input maxlength='10' type='number' class='form-control' id='cedula_".$dato[$i]['cedula']."' name='cedula' value='".$dato[$i]['cedula']."' disabled='disabled' /></td>
+				<td><input maxlength='10' type='text' class='form-control' id='nombre_".$dato[$i]['cedula']."' name='nombre' value='".$dato[$i]['nombre']."' disabled='disabled' /></td>
+				<td><input maxlength='10' type='text' class='form-control' id='apellido_".$dato[$i]['cedula']."' name='apellido' value='".$dato[$i]['apellido']."' disabled='disabled' /></td>
+				<td><input maxlength='10' type='text' class='form-control datepicker' id='fecha_nac_".$dato[$i]['cedula']."' name='fecha_nac' value='".$dato[$i]['fecha_nac']."' disabled='disabled' /></td>
+				<td><input maxlength='10' type='text' class='form-control' id='telefono_".$dato[$i]['cedula']."' name='telefono' value='".$dato[$i]['telefono']."' disabled='disabled' /></td>
 				<td>".getRolPersona($dato[$i]['id_rol'],$dato[$i]['cedula'])."</td>
 				<td>
 					<button data-persona-edit='".$dato[$i]['cedula']."' class='btn-success'>
-						<span class='glyphicon glyphicon-pencil'></span>
+						<span class='glyphicon glyphicon glyphicon glyphicon-pencil'></span>
 					</button>
 					<button data-persona-delete='".$dato[$i]['cedula']."' class='btn-danger'>
 						<span class='glyphicon glyphicon-remove'></span>
@@ -42,11 +42,11 @@
 			<div id='new_persona_campos' data-estado='no_visible' style='display: none;'>
 				<table class='table'>
 					<tr>
-						<td><input type='number' name='cedula' id='cedula' placeholder='Cedula' class='form-control'/></td>
-						<td><input type='text' name='nombre' id='nombre' placeholder='Nombre' class='form-control'/></td>
-						<td><input type='text' name='apellido' id='apellido' placeholder='Apellido' class='form-control'/></td>
-						<td><input type='text' name='fecha_nac' id='fecha_nac' placeholder='Fecha De Nacimiento' class='form-control datepicker'/></td>
-						<td><input type='number' name='telefono' id='telefono' placeholder='Telefono' class='form-control'/></td>
+						<td><input maxlength='10' type='number' name='cedula' id='cedula' placeholder='Cedula' class='form-control'/></td>
+						<td><input maxlength='10' type='text' name='nombre' id='nombre' placeholder='Nombre' class='form-control'/></td>
+						<td><input maxlength='10' type='text' name='apellido' id='apellido' placeholder='Apellido' class='form-control'/></td>
+						<td><input maxlength='10' type='text' name='fecha_nac' id='fecha_nac' placeholder='Fecha De Nacimiento' class='form-control datepicker'/></td>
+						<td><input maxlength='10' type='number' name='telefono' id='telefono' placeholder='Telefono' class='form-control'/></td>
 						<td>".getRolPersona(0,0)."</td>
 						<td><button id='save_new_persona' class='btn-success'>Guardar</button></td>
 					</tr>

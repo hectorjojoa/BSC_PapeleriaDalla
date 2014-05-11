@@ -53,6 +53,11 @@ $(function(){
 						$(this).slider({
 							max : $("#select_indicador").data("valor-esperado"),
 							min : 0,
+							formater: function(value) {
+								return 'Valor obtenido: ' + value;
+							},
+							//handle : 'circle',
+							orientation : 'horizontal',
 							step : 1,
 							selection : 'before',
 							value : $(this).val()

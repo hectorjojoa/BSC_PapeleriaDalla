@@ -1,3 +1,4 @@
+<!--  login -->
 <?php
 	session_start();
 	if(!isset($_SESSION["usuario"])){
@@ -27,12 +28,20 @@
 					<script type="text/javascript" src="js/producto.js"></script>
 					<script type="text/javascript" src="js/indicador.js"></script>
 					<script type="text/javascript" src="js/evaluar.js"></script>
+					<script type="text/javascript" src="js/venta.js"></script>
+				<!--  FIN  -->';
+		}
+		
+		if($_SESSION["usuario"]["id_rol"] == 2){
+			echo '
+				<!-- SCRIPTS PARA EL FUNCIONAMIENTO DE LOS INCLUDE CORRESPONDIENTES A EMPLEADO -->
+					<script type="text/javascript" src="js/venta.js"></script>
 				<!--  FIN  -->';
 		}
 	?>
 
 </head>
-<body>
+<body background="images/fondo1.jpg">
 	<div class="row">
 		<div id ="banner" class="col-xs-12">
 			<img src="images/banner.jpg" id="img_banner">
@@ -45,14 +54,15 @@
 			?>
 		</div>
 		<div class="col-xs-2">
-			<button id="salir" name="salir" class="btn btn-danger">Salir</button>
+			<button  id="salir" name="salir" class="btn btn-danger">Salir</button>
 		</div>
 	</div>
 	<div class="row" id="container_principal">
 		<section class="col-xs-10">
 			<article>
-				<div id="container">
-					Seleccione una opcion en el menu del lado derecho.
+				<div id="container" >
+					<h4>Seleccione una opcion en el menu del lado derecho.</h4>
+					<img src="images/reciclaje.png" id="img">
 				</div>
 			</article>
 		</section>
@@ -67,7 +77,7 @@
 		</aside>
 	</div>
 	<footer id="pie">
-		<h5>Copiright Blancolino 2014</h5>
+		<h5>Gerencia Tecnologica X</h5>
 	</footer>
 </body>
 </html>

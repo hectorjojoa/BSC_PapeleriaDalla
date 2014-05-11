@@ -14,9 +14,9 @@
 			</tr>";
 		for ($i=0; $i < sizeof($dato); $i++) { 
 			$return .= "<tr>
-				<td><input type='number' class='form-control' id='id_".$dato[$i]['id']."' name='id' value='".$dato[$i]['id']."' disabled='disabled' /></td>
-				<td><input type='text' class='form-control' id='descripcion_".$dato[$i]['id']."' name='descripcion' value='".$dato[$i]['descripcion']."' disabled='disabled' /></td>
-				<td><input type='number' class='form-control' id='valor_esperado_".$dato[$i]['id']."' name='valor_esperado' value='".$dato[$i]['valor_esperado']."' disabled='disabled' /></td>
+				<td><input maxlength='10' type='number' class='form-control' id='id_".$dato[$i]['id']."' name='id' value='".$dato[$i]['id']."' disabled='disabled' /></td>
+				<td><input maxlength='10' type='text' class='form-control' id='descripcion_".$dato[$i]['id']."' name='descripcion' value='".$dato[$i]['descripcion']."' disabled='disabled' /></td>
+				<td><input maxlength='10' type='number' class='form-control' id='valor_esperado_".$dato[$i]['id']."' name='valor_esperado' value='".$dato[$i]['valor_esperado']."' disabled='disabled' /></td>
 				<td>
 					<button data-indicador-edit='".$dato[$i]['id']."' class='btn-success'>
 						<span class='glyphicon glyphicon-pencil'></span>
@@ -36,9 +36,9 @@
 			<div id='new_indicador_campos' data-estado='no_visible' style='display: none;'>
 				<table class='table'>
 					<tr>
-						<td><input type='number' name='id' id='id' placeholder='Id' class='form-control'/></td>
-						<td><input type='text' name='descripcion' id='descripcion' placeholder='Descripcion' class='form-control'/></td>
-						<td><input type='number' name='valor_esperado' id='valor_esperado' placeholder='Valor Esperado' class='form-control'/></td>
+						<td><input maxlength='10' type='number' name='id' id='id' placeholder='Id' class='form-control'/></td>
+						<td><input maxlength='10' type='text' name='descripcion' id='descripcion' placeholder='Descripcion' class='form-control'/></td>
+						<td><input maxlength='10' type='number' name='valor_esperado' id='valor_esperado' placeholder='Valor Esperado' class='form-control'/></td>
 						<td><button id='save_new_indicador' class='btn-success'>Guardar</button></td>
 					</tr>
 				</table>

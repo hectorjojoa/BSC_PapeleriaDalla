@@ -1,35 +1,7 @@
 $(function(){
 
 	$("#container").delegate("#fecha_indicador","change",function(){
-		if($("#select_indicador").val() != -1){
-			$.ajax({
-				method : "GET",
-				url : "response/response_evaluar.php",
-				data: {
-					opcion : "loadPersonByIndicadorFecha",
-					id_indicador : $("#select_indicador").val(),
-					fecha : $("#fecha_indicador").val()
-				},
-				success : function(data){
-					$("#evaluar_persona").html(data);
-				}
-			});
-		}
-		if($("#select_persona").val() != -1){
-			$.ajax({
-				method : "GET",
-				url : "response/response_evaluar.php",
-				data: {
-					opcion : "getIndicadorByPersonaFecha",
-					cedula : $("#select_persona").val(),
-					fecha : $("#fecha_indicador").val()
-				},
-				success : function(data){
-					$("#evaluar_indicador").html(data);
-
-				}
-			});
-		}
+		console.log("cambio la fecha");
 	});
 
 	$("#container").delegate("#select_indicador","change",function(){
@@ -50,34 +22,13 @@ $(function(){
 				success : function(data){
 					$("#evaluar_persona").html(data);
 					$(".slider").each(function(){
-						$(this).slider({
-							max : $("#select_indicador").data("valor-esperado"),
-							min : 0,
-							formater: function(value) {
-								return 'Valor obtenido: ' + value;
-							},
-							//handle : 'circle',
-							orientation : 'horizontal',
-							step : 1,
-							selection : 'before',
-							value : $(this).val()
-						}).on('slideStop', function(ev){
-							$.ajax({
-								method : "GET",
-								url : "response/response_evaluar.php",
-								data : {
-									opcion : "saveIndicadorPersona",
-									accion : $(this).data("accion"),
-									id_indicador : $("#select_indicador").val(),
-									cedula : $(this).data("cedula"),
-									fecha : $("#fecha_indicador").val(),
-									valor_obtenido : $(this).data("slider").getValue()
-								},
-								success : function(dato){
-									console.log(dato);
-								}
-							});
-						});
+						HandlerSlider(
+							$(this),
+							$(this).data("valor-esperado"),
+							$("#select_indicador").val(),
+							$(this).data("cedula"),
+							$("#fecha_indicador").val()
+						);
 					});
 				}
 			});
@@ -98,6 +49,15 @@ $(function(){
 				},
 				success : function(data){
 					$("#evaluar_indicador").html(data);
+					$(".slider").each(function(){
+						HandlerSlider(
+							$(this),
+							$(this).data("valor-esperado"),
+							$(this).data("indicador"),
+							$("#select_persona").val(),
+							$("#fecha_indicador").val()
+						);
+					});
 				}
 			});
 		}
@@ -110,3 +70,35 @@ $(function(){
 	});
 
 });
+
+
+function HandlerSlider(slider,max,id_indicador,cedula,fecha){
+	slider.slider({
+		max : max,
+		min : 0,
+		formater: function(value) {
+			return 'Valor obtenido: ' + value;
+		},
+		//handle : 'circle',
+		orientation : 'horizontal',
+		step : 1,
+		selection : 'before',
+		value : slider.val()
+	}).on('slideStop', function(ev){
+		$.ajax({
+			method : "GET",
+			url : "response/response_evaluar.php",
+			data : {
+				opcion : "saveIndicadorPersona",
+				accion : slider.data("accion"),
+				id_indicador : id_indicador,
+				cedula : cedula,
+				fecha : fecha,
+				valor_obtenido : slider.data("slider").getValue()
+			},
+			success : function(dato){
+				
+			}
+		});
+	});
+}

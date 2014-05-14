@@ -77,10 +77,18 @@ $(function(){
 
 	$("#container").delegate(".datepicker","focusin",function(){
 		$(this).datepicker({
-			format :'yyyy-mm-dd',
-			startDate : '-1w',
-			endDate : '+0d'
+		    format: "yyyy-mm-dd",
+		    startDate: "-10y",
+		    endDate: "+0d",
+		    todayBtn: true
+		}).on('changeDate', function(ev) {
+			console.log("cambio la fecha a: " + ev.getDate());
 		});
 	});
-	
+
+	$("#container").delegate("#tab_menu_evaluar a","click",function (e) {
+	  e.preventDefault()
+	  //$(this).tab('show')
+	  console.log($(this));
+	});
 });

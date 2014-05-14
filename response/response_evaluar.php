@@ -85,7 +85,7 @@
 				<td>".$persona[$i]['cedula']."</td>
 				<td>".$persona[$i]['nombre_persona']."</td>
 				<td>
-					<input maxlength='10' type='text' data-cedula='".$persona[$i]["cedula"]."' class= 'slider' value='".$persona[$i]['valor_obtenido']."' data-accion='".((empty($persona[$i]["valor_obtenido"])?"i":"u"))."' />
+					<input type='text' data-cedula='".$persona[$i]["cedula"]."' class= 'slider' value='".$persona[$i]['valor_obtenido']."' data-accion='".((empty($persona[$i]["valor_obtenido"])?"i":"u"))."' />
 				</td>
 			</tr>";
 		}
@@ -108,7 +108,9 @@
 			<tr>
 				<td>".$indicador[$i]['id_indicador']."</td>
 				<td>".$indicador[$i]['descripcion']."</td>
-				<td>".$indicador[$i]['valor_obtenido']."</td>
+				<td>
+					<input type='text' data-indicador='".$indicador[$i]['id_indicador']."' class='slider' value='".$indicador[$i]['valor_obtenido']."' data-accion='".((empty($indicador[$i]['valor_obtenido'])?"i":"u"))."' />
+				</td>
 			</tr>";
 		}
 		$return .= "</table>";

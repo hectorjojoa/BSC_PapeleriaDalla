@@ -9,15 +9,14 @@
 <html>
 <head>
 	<title>Papeleria</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/slider.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/datepicker.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/estilobanner.css">
 	<script src="js/jquery-2.1.0.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/bootstrap-slider.js"></script>
-	<script src="js/jquery.livequery.js"></script>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/datepicker.css" rel="stylesheet">
-	<link href="css/slider.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/estilobanner.css">
+	<script src="js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript" src="js/bienvenido.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<?php
